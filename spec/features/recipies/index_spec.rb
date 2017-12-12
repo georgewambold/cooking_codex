@@ -5,7 +5,7 @@ feature 'viewing the recipies index' do
     existing_cook = Cook.create(email: 'cook@martha.com', password: '12345asdf')
 
     login_as(existing_cook, scope: :cook)
-    visit('recipe/index')
+    visit('/recipes')
 
     expect(page).to have_content('No recipies yet! Add one!')
   end

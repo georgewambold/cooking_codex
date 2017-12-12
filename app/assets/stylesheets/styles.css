@@ -467,7 +467,7 @@ body {
 }
 .recipe-detail ol.directions {
   list-style-type: none;
-  list-style-type: decimal!ie;
+  list-style-type: decimal;
   margin: 15px 0 0 34px;
   padding: 0;
   counter-reset: li-counter;
