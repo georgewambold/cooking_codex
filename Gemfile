@@ -31,6 +31,8 @@ gem 'pry-rails'
 
 gem 'lookup_by'
 
+gem 'draper'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
