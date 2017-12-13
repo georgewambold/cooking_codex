@@ -17,5 +17,6 @@
  *= require bootstrap.min
  *= require styles
  *= require select2.min
+ *= require bootstrap-select
 
  */

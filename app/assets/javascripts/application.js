@@ -18,3 +18,4 @@
 //= require popper.min
 //= require_tree .
 //= require bootstrap.min
+//= require bootstrap-select

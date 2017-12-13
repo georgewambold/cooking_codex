@@ -1,6 +1,6 @@
 class DeviseCreateCooks < ActiveRecord::Migration[5.1]
   def change
-    create_table :cooks do |t|
+    create_table :cooks, primary_key: :cook_id do |t|
 
       t.string :first_name
       t.string :last_name

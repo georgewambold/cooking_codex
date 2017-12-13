@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212180102) do
+ActiveRecord::Schema.define(version: 20171213162752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cooks", force: :cascade do |t|
+  create_table "cooks", primary_key: "cook_id", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email", default: "", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20171212180102) do
     t.index ["recipe_id"], name: "index_directions_on_recipe_id"
   end
 
+  create_table "images", primary_key: "image_id", force: :cascade do |t|
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", primary_key: "ingredient_id", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -53,7 +62,16 @@ ActiveRecord::Schema.define(version: 20171212180102) do
     t.string "name"
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
+  create_table "recipe_images", primary_key: "recipe_image_id", force: :cascade do |t|
+    t.bigint "recipes_id"
+    t.bigint "images_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["images_id"], name: "index_recipe_images_on_images_id"
+    t.index ["recipes_id"], name: "index_recipe_images_on_recipes_id"
+  end
+
+  create_table "recipe_ingredients", primary_key: "recipe_ingredient_id", force: :cascade do |t|
     t.integer "ingredient_id", null: false
     t.integer "recipe_id", null: false
     t.string "amount"

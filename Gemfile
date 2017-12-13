@@ -17,7 +17,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'font-awesome-rails'
+gem 'bootstrap4-select-rails'
 
+gem 'simple_form'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -32,9 +34,11 @@ gem 'devise'
 
 gem 'pry-rails'
 
-gem 'lookup_by'
 
 gem 'draper'
+
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

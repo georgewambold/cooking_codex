@@ -7,7 +7,7 @@ class RecipeIndexDecorator < Draper::Decorator
   end
 
   def primary_photo_url
-
+    object.primary_photo.image.url
   end
 
   def show_path

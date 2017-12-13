@@ -1,2 +1,27 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="submit">
+  <div class="title">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>New Recipe</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <%= simple_form_for @recipe, :html => {:multipart => true} do |f| %>
+          <%= f.input :title, label: "Recipe Title" %>
+          <%if true%>
+            <%= f.association :recipe_category, collection: RecipeCategory.all, prompt: "Choose one.." %>
+          <% end %>
+          <%= f.input :summary, label: "Brief Summary" %>
+          <%= f.input :images, as: :file, label: 'Recipe Photo' %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

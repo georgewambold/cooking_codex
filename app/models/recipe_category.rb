@@ -1,3 +1,3 @@
 class RecipeCategory < ApplicationRecord
-  lookup_by :name
+  has_many :recipies
 end
