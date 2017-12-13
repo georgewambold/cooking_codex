@@ -3,11 +3,15 @@ class RecipeIndexDecorator < Draper::Decorator
   delegate_all
 
   def cook_name
-    object.cook.first_name
+    if object.cook
+      object.cook.first_name
+    end
   end
 
   def primary_photo_url
-    object.primary_photo.image.url
+    if object.primary_photo.present?
+      object.primary_photo.file.url
+    end
   end
 
   def show_path

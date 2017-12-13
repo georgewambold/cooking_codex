@@ -3,4 +3,6 @@ class Cook < ApplicationRecord
   # :confirmable, :trackable, :lockable, :timeoutable, :omniauthable, :registerable
   devise :database_authenticatable, :recoverable, :rememberable,
     :validatable
+
+  has_many :recipes
 end

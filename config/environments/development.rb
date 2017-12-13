@@ -1,7 +1,7 @@
 Rails.application.configure do
 
   config.paperclip_defaults = {
-    path: "#{Rails.root}/tmp/assets"
+    path: "#{Rails.root}/tmp/assets/:basename#{Time.current}.:extension"
   }
 
   # Settings specified here will take precedence over those in config/application.rb.

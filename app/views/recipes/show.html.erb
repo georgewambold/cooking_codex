@@ -1,2 +1,59 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="recipe-detail">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <h4><%= @recipe.current_date %></h4>
+        <h1><%= @recipe.title %></h1>
+        <div class="by"><i class="fa fa-user" aria-hidden="true"></i> <%= @recipe.recipe_author %></div>
+      </div>
+      <div class="col-lg-8">
+        <img src="<%= @recipe.primary_photo_url %>" alt="">
+
+        <div class="info">
+          <div class="row">
+            <div class="col-lg-4 col-sm-4">
+              <p>Serves:</p>
+              <p><strong><i class="fa fa-users" aria-hidden="true"></i><%= @recipe.yield %></strong>
+              </p>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <p>Prep Time:</p>
+              <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i><%= @recipe.prep_time %></strong>
+              </p>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <p>Cooking:</p>
+              <p><strong><i class="fa fa-clock-o" aria-hidden="true"></i><%= @recipe.cooking_time %></strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p><%= @recipe.summary %></p>
+
+        <div class="ingredient-direction">
+          <div class="row">
+            <div class="col-lg-6 col-sm-6">
+              <h3>Ingredients</h3>
+              <ul class="ingredients">
+                <% @recipe.recipe_ingredients.each do |ingredient| %>
+                  <li>
+                    <%= "#{ingredient.amount} #{ingredient.name}" %>
+                  </li>
+                <% end%>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+              <h3>Directions</h3>
+              <ol class="directions">
+                <% @recipe.directions.each do |direction| %>
+                  <li> <%= direction.direction %> </li>
+                <% end%>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

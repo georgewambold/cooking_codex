@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20171213162752) do
   end
 
   create_table "recipe_images", primary_key: "recipe_image_id", force: :cascade do |t|
-    t.bigint "recipes_id"
-    t.bigint "images_id"
+    t.bigint "recipe_id"
+    t.bigint "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["images_id"], name: "index_recipe_images_on_images_id"
-    t.index ["recipes_id"], name: "index_recipe_images_on_recipes_id"
+    t.index ["image_id"], name: "index_recipe_images_on_image_id"
+    t.index ["recipe_id"], name: "index_recipe_images_on_recipe_id"
   end
 
   create_table "recipe_ingredients", primary_key: "recipe_ingredient_id", force: :cascade do |t|
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20171213162752) do
     t.string "cooking_time"
     t.integer "recipe_category_id"
     t.integer "cook_id"
+    t.integer "primary_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cook_id"], name: "index_recipes_on_cook_id"
