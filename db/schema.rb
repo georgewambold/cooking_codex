@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20171212180102) do
   enable_extension "plpgsql"
 
   create_table "cooks", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -66,8 +68,10 @@ ActiveRecord::Schema.define(version: 20171212180102) do
     t.string "prep_time"
     t.string "cooking_time"
     t.integer "recipe_category_id"
+    t.integer "cook_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cook_id"], name: "index_recipes_on_cook_id"
     t.index ["recipe_category_id"], name: "index_recipes_on_recipe_category_id"
   end
 

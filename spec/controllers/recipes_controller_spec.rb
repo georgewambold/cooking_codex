@@ -1,46 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe RecipesController, type: :controller do
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #index" do
+  describe "#index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
-  end
 
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
+    it "calls RecipeIndexDecorator#decorate_collection with all recipies" do
+      recipe = Recipe.create(title: 'spagetti', recipe_category_id: 1)
+      allow(RecipeIndexDecorator).to receive(:decorate_collection)
+        .and_call_original
 
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
+      get :index
+
+      expect(RecipeIndexDecorator).to have_received(:decorate_collection)
+        .with([recipe])
     end
   end
 

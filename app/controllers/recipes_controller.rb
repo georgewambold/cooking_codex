@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @recipes = RecipeIndexDecorator.decorate_collection(Recipe.all)
   end
 
   def update

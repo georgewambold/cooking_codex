@@ -7,6 +7,7 @@ class CreateRecipes < ActiveRecord::Migration[5.1]
       t.string :prep_time
       t.string :cooking_time
       t.integer :recipe_category_id, index: true
+      t.integer :cook_id, index: true
 
       t.timestamps
     end
