@@ -9,6 +9,6 @@ feature "user logging in" do
     fill_in('Password', :with => 'asdf123')
     find('input[name="commit"]').click
 
-    expect(page).to have_content('LaBounta Recipies')
+    expect(page).to have_content('LaBounta Recipes')
   end
 end

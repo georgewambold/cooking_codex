@@ -19,4 +19,3 @@
 //= require_tree .
 //= require bootstrap.min
 //= require bootstrap-select
-//= require scripts

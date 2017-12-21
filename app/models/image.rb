@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
   has_many :recipe_images
-  has_many :recipies, through: :recipe_images
+  has_many :recipes, through: :recipe_images
 
   has_attached_file :file, styles: {
     thumb: '100x100>',

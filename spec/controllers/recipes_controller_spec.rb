@@ -8,7 +8,7 @@ RSpec.describe RecipesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "calls RecipeIndexDecorator#decorate_collection with all recipies" do
+    it "calls RecipeIndexDecorator#decorate_collection with all recipes" do
       recipe = Recipe.create(title: 'spagetti')
       allow(RecipeIndexDecorator).to receive(:decorate_collection)
         .and_call_original
