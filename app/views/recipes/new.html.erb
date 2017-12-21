@@ -11,59 +11,7 @@
   <div class="content">
     <div class="container">
       <div class="row">
-        <%= simple_form_for @recipe, :html => {:multipart => true} do |f| %>
-          <%= f.input :title, label: "Recipe Title" %>
-          <%= f.association :recipe_category, collection: RecipeCategory.all, prompt: "Choose one.." %>
-          <%= f.input :summary, label: "Brief Summary" %>
-          <%= f.input :images, as: :file %>
-          <div class="form-group">
-            <label>Ingredients</label>
-            <div id="ingredient-sortable" class="ui-sortable">
-              <div class="box ui-sortable-handle">
-                <div class="row">
-                  <div class="col-lg-5 col-sm-5">
-                    <input type="text" class="form-control" name="recipe[ingredients][][name]" placeholder="Name of ingredient">
-                  </div>
-                  <div class="col-lg-5 col-sm-5">
-                    <input type="text" class="form-control" name="recipe[ingredients][][amount]" placeholder="Notes (quantity or additional info)">
-                  </div>
-                  <div class="col-lg-1 col-sm-1">
-                    <i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn ingredient-button">Add new ingredient </a>
-          </div>
-
-          <div class="form-group">
-            <label>Directions</label>
-            <div id="directions-sortable" class="ui-sortable">
-              <div class="box ui-sortable-handle">
-                <div class="row">
-                  <div class="col-lg-1 col-sm-1">
-                    <i class="fa fa-arrows" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-lg-2 col-sm-2">
-                    <p class="direction-counter" style="margin-top:11px;">Step 1</p>
-                    <input class="direction-counter-input" type="hidden" name=recipe[directions][][step]>
-                  </div>
-                  <div class="col-lg-8 col-sm-8">
-                    <textarea class="form-control" rows="5" name="recipe[directions][][direction]" placeholder="Step details"></textarea>
-                  </div>
-                  <div class="col-lg-1 col-sm-1">
-                    <i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="btn directions-button">Add another step</a>
-          </div>
-          <%= f.input :yield %>
-          <%= f.input :prep_time %>
-          <%= f.input :cooking_time %>
-          <%= f.submit 'Create recipe!', class: 'btn btn-outline-secondary' %>
-        <% end %>
+        <%= render 'shared/new_recipe_form' %>
       </div>
     </div>
   </div>
