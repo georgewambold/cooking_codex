@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    #recipe = RecipeCreator.new(recipe_params: recipe_params).execute
     recipe = Recipe.create(recipe_params)
 
     if recipe.errors.empty?
@@ -45,7 +44,7 @@ class RecipesController < ApplicationController
         :prep_time,
         :cooking_time,
         recipe_ingredients_attributes: [ :amount, ingredient_attributes: [ :name ] ],
-        directions_attributes: [ :step, :direction ],
+        directions_attributes: [ :step_number, :description ],
     )
   end
 end

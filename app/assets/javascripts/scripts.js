@@ -54,10 +54,10 @@ addIngredientInput = function() {
     '<div class="box ui-sortable-handle">' +
       '<div class="row">' +
         '<div class="col-lg-5 col-sm-5">' +
-          '<input type="text" class="form-control" name="recipe[ingredients][][name]" placeholder="Name of ingredient">' +
+          '<input type="text" class="form-control" name="recipe[recipe_ingredients_attributes][][ingredient_attributes[name]]" placeholder="Name of ingredient">' +
         '</div>' +
         '<div class="col-lg-5 col-sm-5">' +
-          '<input type="text" class="form-control" name="recipe[ingredients][][amount]" placeholder="Notes (quantity or additional info)">' +
+          '<input type="text" class="form-control" name="recipe[recipe_ingredients_attributes][][amount]" placeholder="Notes (quantity or additional info)">' +
         '</div>' +
         '<div class="col-lg-1 col-sm-1">' +
         '<i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i>' +
@@ -76,10 +76,10 @@ addDirectionInput = function() {
         '</div> ' +
         '<div class="col-lg-2 col-sm-2"> ' +
           '<p class="direction-counter" style="margin-top:11px;">Step 1</p> ' +
-          '<input class="direction-counter-input" type="hidden" name=recipe[directions][][step]> ' +
+          '<input class="direction-counter-input" type="hidden" name=recipe[directions_attributes][][step_number]> ' +
         '</div> ' +
         '<div class="col-lg-8 col-sm-8"> ' +
-          '<textarea class="form-control" rows="5" name="recipe[directions][][direction]" placeholder="Step details"></textarea> ' +
+          '<textarea class="form-control" rows="5" name="recipe[directions_attributes][][description]" placeholder="Step details"></textarea> ' +
         '</div> ' +
         '<div class="col-lg-1 col-sm-1"> ' +
           '<i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i> ' +

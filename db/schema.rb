@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171213162752) do
   create_table "directions", primary_key: "direction_id", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.integer "step_number"
-    t.text "direction"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_directions_on_recipe_id"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20171213162752) do
   end
 
   create_table "recipes", primary_key: "recipe_id", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.text "summary"
     t.string "yield"
     t.string "prep_time"

@@ -47,7 +47,7 @@
               <h3>Directions</h3>
               <ol class="directions">
                 <% @recipe.directions.each do |direction| %>
-                  <li> <%= direction.direction %> </li>
+                  <li> <%= direction.description %> </li>
                 <% end%>
               </ol>
             </div>
