@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213162752) do
+ActiveRecord::Schema.define(version: 20171212180102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(version: 20171213162752) do
     t.index ["recipe_id"], name: "index_directions_on_recipe_id"
   end
 
-  create_table "images", primary_key: "image_id", force: :cascade do |t|
-    t.string "file_file_name"
-    t.string "file_content_type"
-    t.integer "file_file_size"
-    t.datetime "file_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ingredients", primary_key: "ingredient_id", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -60,15 +51,6 @@ ActiveRecord::Schema.define(version: 20171213162752) do
 
   create_table "recipe_categories", primary_key: "recipe_category_id", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "recipe_images", primary_key: "recipe_image_id", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_recipe_images_on_image_id"
-    t.index ["recipe_id"], name: "index_recipe_images_on_recipe_id"
   end
 
   create_table "recipe_ingredients", primary_key: "recipe_ingredient_id", force: :cascade do |t|
@@ -87,7 +69,10 @@ ActiveRecord::Schema.define(version: 20171213162752) do
     t.string "cooking_time"
     t.integer "recipe_category_id"
     t.integer "cook_id"
-    t.integer "primary_image_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cook_id"], name: "index_recipes_on_cook_id"

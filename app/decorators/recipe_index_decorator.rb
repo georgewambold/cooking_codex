@@ -9,8 +9,8 @@ class RecipeIndexDecorator < Draper::Decorator
   end
 
   def primary_photo_url
-    if object.primary_photo.present?
-      object.primary_photo.file.url
+    if object.image
+      object.image.url(:original)
     end
   end
 

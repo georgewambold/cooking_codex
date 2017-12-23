@@ -16,14 +16,14 @@ class RecipesController < ApplicationController
 
   def show
     recipe = Recipe
-      .includes(:directions, recipe_ingredients: :ingredient, recipe_images: :image)
+      .includes(:directions, recipe_ingredients: :ingredient)
       .find(params[:id])
 
     @recipe = RecipeShowDecorator.decorate(recipe)
   end
 
   def index
-    @recipes = RecipeIndexDecorator.decorate_collection(Recipe.includes(:primary_photo).all)
+    @recipes = RecipeIndexDecorator.decorate_collection(Recipe.all)
   end
 
   def update
@@ -43,6 +43,7 @@ class RecipesController < ApplicationController
         :yield,
         :prep_time,
         :cooking_time,
+        :image,
         recipe_ingredients_attributes: [ :amount, ingredient_attributes: [ :name ] ],
         directions_attributes: [ :step_number, :description ],
     )

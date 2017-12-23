@@ -2,7 +2,13 @@
   <%= f.input :title, label: "Recipe Title" %>
   <%= f.association :recipe_category, collection: RecipeCategory.all, prompt: "Choose one.." %>
   <%= f.input :summary, label: "Brief Summary" %>
-  <%= f.input :images, as: :file %>
+
+  <%= f.input :image, as: :file %>
+
+  <%if false%>
+    <%= f.input :images, html: { name: 'recipe[image_attributes]' }, as: :file %>
+  <% end %>
+
   <div class="form-group">
     <label>Ingredients</label>
     <div id="ingredient-sortable" class="ui-sortable">

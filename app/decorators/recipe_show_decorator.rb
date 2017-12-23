@@ -12,8 +12,12 @@ class RecipeShowDecorator < Draper::Decorator
   end
 
   def primary_photo_url
-    if object.primary_photo
-      object.primary_photo.url
+    if object.image
+      if Rails.env == 'development'
+        "#{Rails.root}/public#{object.image.url}"
+      else
+        object.image.url
+      end
     end
   end
 

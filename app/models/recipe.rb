@@ -1,13 +1,17 @@
 class Recipe < ApplicationRecord
+  has_attached_file :image,
+    styles: { thumb: '348x348>',
+              medium: '350x350>' }
+
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   belongs_to :recipe_category, optional: true
+
   belongs_to :cook, optional: true
-  belongs_to :primary_photo, foreign_key: :primary_image_id, class_name: "Image", optional: true
 
   has_many :directions
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
-  has_many :recipe_images
-  has_many :images, through: :recipe_images
 
   accepts_nested_attributes_for :directions
   accepts_nested_attributes_for :recipe_ingredients
