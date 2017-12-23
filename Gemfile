@@ -63,6 +63,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
-  gem "selenium-webdriver"
+  gem "capybara-webkit"
   gem 'capybara'
 end

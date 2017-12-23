@@ -15,11 +15,11 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'database_cleaner'
 require 'pry'
+require 'Capybara'
 
-#Capybara.configure do |c|
-#  c.default_driver = :selenium
-#  c.app_host = "http://localhost:3000"
-#end
+Capybara.configure do |c|
+  c.javascript_driver = :webkit
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

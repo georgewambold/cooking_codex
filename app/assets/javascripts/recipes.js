@@ -1,4 +1,4 @@
-$(document).on('ready page:load turbolinks:load', function() {
+$(document).on('turbolinks:load', function() {
   addDirectionInput();
   addIngredientInput();
 
@@ -30,7 +30,7 @@ $(document).on('ready page:load turbolinks:load', function() {
 
   $("#directions-sortable").disableSelection();
 
-  $(".directions-button").click(function() {
+  $(".direction-button").click(function() {
     event.preventDefault();
     addDirectionInput();
 
@@ -53,10 +53,10 @@ addIngredientInput = function() {
     '<div class="box ui-sortable-handle">' +
       '<div class="row">' +
         '<div class="col-lg-5 col-sm-5">' +
-          '<input type="text" class="form-control" name="recipe[recipe_ingredients_attributes][][ingredient_attributes[name]]" placeholder="Name of ingredient">' +
+          '<input type="text" class="form-control ingredient-name-input" name="recipe[recipe_ingredients_attributes][][ingredient_attributes[name]]" placeholder="Name of ingredient">' +
         '</div>' +
         '<div class="col-lg-5 col-sm-5">' +
-          '<input type="text" class="form-control" name="recipe[recipe_ingredients_attributes][][amount]" placeholder="Notes (quantity or additional info)">' +
+          '<input type="text" class="form-control ingredient-amount-input" " name="recipe[recipe_ingredients_attributes][][amount]" placeholder="Notes (quantity or additional info)">' +
         '</div>' +
         '<div class="col-lg-1 col-sm-1">' +
         '<i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i>' +
@@ -78,7 +78,7 @@ addDirectionInput = function() {
           '<input class="direction-counter-input" type="hidden" name=recipe[directions_attributes][][step_number]> ' +
         '</div> ' +
         '<div class="col-lg-8 col-sm-8"> ' +
-          '<textarea class="form-control" rows="5" name="recipe[directions_attributes][][description]" placeholder="Step details"></textarea> ' +
+          '<textarea class="form-control direction-description-input" rows="5" name="recipe[directions_attributes][][description]" placeholder="Step details"></textarea> ' +
         '</div> ' +
         '<div class="col-lg-1 col-sm-1"> ' +
           '<i class="fa fa-times-circle-o minusbtn" aria-hidden="true"> </i> ' +
