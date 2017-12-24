@@ -1,7 +1,8 @@
 class Recipe < ApplicationRecord
   has_attached_file :image,
     styles: { thumb: '348x348>',
-              medium: '350x350>' }
+              medium: '350x350>' },
+              default_url: ""
 
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 

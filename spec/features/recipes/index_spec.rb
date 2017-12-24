@@ -22,13 +22,9 @@ feature 'viewing the recipes index' do
 
   def create_recipe_for(cook)
     Recipe.new.tap do |recipe|
-      image = Image.create(file: File.new("#{Rails.root}/spec/fixtures/files/test.png"))
-
       recipe.title = 'Spagetti'
       recipe.cook  = cook
       recipe.recipe_category = RecipeCategory.create(name: 'breakfast')
-      recipe.images << image
-      recipe.primary_image_id = image.id
     end.save
   end
 end
