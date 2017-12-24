@@ -1,6 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  addDirectionInput();
-  addIngredientInput();
 
   $('.js-search-category, .js-search-category2').select2();
 

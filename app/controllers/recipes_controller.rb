@@ -4,12 +4,11 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.create(recipe_params)
+    @recipe = Recipe.create(recipe_params)
 
-    if recipe.errors.empty?
-      redirect_to recipe
+    if @recipe.errors.empty?
+      redirect_to @recipe
     else
-      @recipe = recipe
       render :new
     end
   end
@@ -27,9 +26,17 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      render :edit
+    end
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   private

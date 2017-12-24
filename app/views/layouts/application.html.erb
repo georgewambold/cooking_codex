@@ -23,9 +23,17 @@
             <li class="nav-item dropdown active">
               <div style="width:1px;height:73px;"></div>
             </li>
-            <li class="nav-item btn-submit-recipe">
-              <a class="nav-link" href="/recipes/new"><i class="fa fa-upload" aria-hidden="true"></i> Submit Recipe</a>
-            </li>
+            <% if begin;current_page?(controller: 'recipes', action: 'show');rescue;false;end; %>
+              <li class="nav-item btn-edit-recipe">
+                <a class="nav-link" href=<%= edit_recipe_path(@recipe)%>><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Recipe</a>
+              </li>
+            <% elsif begin;current_page?(controller: 'recipes', action: 'new');rescue;false;end; %>
+            <% elsif begin;current_page?(controller: 'recipes', action: 'edit');rescue;false;end; %>
+            <%else%>
+              <li class="nav-item btn-submit-recipe">
+                <a class="nav-link" href="/recipes/new"><i class="fa fa-upload" aria-hidden="true"></i> Submit Recipe</a>
+              </li>
+            <% end%>
           </ul>
         </div>
       </div>
