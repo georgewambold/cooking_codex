@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snack'].each do |recipe_category|
+  RecipeCategory.find_or_create_by(name: recipe_category)
+end
