@@ -21,3 +21,5 @@
 *.swp
 
 /public/system/recipes/**
+
+.env

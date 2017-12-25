@@ -12,7 +12,7 @@
               <div class="by"><i class="fa fa-user"></i> <%= recipe.cook_name %></div>
               <a href=<%= recipe.show_path %>>
                 <% if recipe.primary_photo_url.present? %>
-                  <img src=<%= recipe.primary_photo_url %>>
+                  <%= image_tag recipe.primary_photo_url %>
                 <% end %>
               </a>
               <h2><a href= <%= recipe.show_path %> ><%= recipe.title %></a></h2>
