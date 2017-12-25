@@ -42,10 +42,12 @@ feature 'creating a new recipe' do
     find('.ingredient-button').click
     all('.ingredient-name-input')[0].set('flour')
     all('.ingredient-amount-input')[0].set('2 cups')
+    find('.ingredient-button').click
     all('.ingredient-name-input')[1].set('eggs')
     all('.ingredient-amount-input')[1].set('8')
     find('.direction-button').click
     all('.direction-description-input')[0].set('mix ingredients')
+    find('.direction-button').click
     all('.direction-description-input')[1].set('bake')
     click_button('Create recipe!')
 

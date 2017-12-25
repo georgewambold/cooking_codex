@@ -57,7 +57,7 @@ RSpec.describe RecipesController, type: :controller do
       recipe = Recipe.create(title: 'foo')
       allow(RecipeEditDecorator).to receive(:decorate)
 
-      get :show, params: { id: recipe.id }
+      get :edit, params: { id: recipe.id }
 
       expect(RecipeEditDecorator).to have_received(:decorate)
         .with(recipe)

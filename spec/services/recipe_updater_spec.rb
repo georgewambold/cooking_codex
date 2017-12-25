@@ -26,8 +26,9 @@ describe RecipeUpdater do
 
     updated_recipe = RecipeUpdater.new(recipe: recipe, recipe_params: valid_association_params(recipe_category)).execute
 
-    binding.pry
-    expect(updated_recipe.ingredients).to
+    expect(updated_recipe.ingredients.first.name).to eq('foo')
+    expect(updated_recipe.directions.first.description).to eq('do stuff')
+
   end
 
   def valid_association_params(recipe_category)
@@ -36,7 +37,7 @@ describe RecipeUpdater do
       recipe_category_id: recipe_category.id,
       recipe_ingredients_attributes: [
         amount: '1',
-        ingredients_attributes: [ name: 'foo' ],
+        ingredient_attributes: { name: 'foo' },
       ],
       directions_attributes: [
         { step_number: 1, description: 'do stuff' }
