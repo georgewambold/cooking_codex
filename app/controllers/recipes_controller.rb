@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.create(recipe_params)
+    @recipe = Recipe.create(recipe_params.merge(cook: current_cook))
 
     if @recipe.errors.empty?
       redirect_to @recipe
