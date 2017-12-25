@@ -11,6 +11,13 @@ feature 'creating a new recipe' do
     expect(page).to have_content('New Recipe')
   end
 
+  scenario 'navigating to the new recipe page without logging in' do
+    visit('/recipes/new')
+
+    expect(page).to have_content('Log In')
+  end
+
+
   scenario 'adding a valid recipe' do
     existing_cook = Cook.create(email: 'cook@martha.com', password: '12345asdf')
 

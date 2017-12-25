@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe RecipesController, type: :controller do
   describe "#index" do
     it "returns http success" do
@@ -22,20 +21,28 @@ RSpec.describe RecipesController, type: :controller do
 
   describe '#new' do
     it "returns http success" do
+      log_in_as_cook
+
       get :new
+
       expect(response).to have_http_status(:success)
     end
   end
 
   describe '#create' do
     it "passes the recipe_params to Recipe" do
+      log_in_as_cook
+
       post :create, params: { recipe: { title: 'spagetti' } }
 
       assert_redirected_to Recipe.last
     end
 
     it 're-renders the recipes#new page if there are errors' do
+      log_in_as_cook
+
       post :create, params: { recipe: { summary: 'foo' } }
+
       expect(response).to render_template(:new)
     end
   end
@@ -54,6 +61,7 @@ RSpec.describe RecipesController, type: :controller do
 
   describe '#edit' do
     it 'uses the recipe edit decorator' do
+      log_in_as_cook
       recipe = Recipe.create(title: 'foo')
       allow(RecipeEditDecorator).to receive(:decorate)
 
@@ -66,6 +74,7 @@ RSpec.describe RecipesController, type: :controller do
 
   describe '#update' do
     it 'uses the recipe show decorator' do
+      log_in_as_cook
       recipe = Recipe.create(title: 'foo')
 
       post :update, params: { id: recipe.id, recipe: { title: 'spoon' } }
@@ -74,11 +83,17 @@ RSpec.describe RecipesController, type: :controller do
     end
 
     it 'uses the recipe show decorator' do
+      log_in_as_cook
       recipe = Recipe.create(title: 'foo')
 
       post :update, params: { id: recipe.id, recipe: { title: 'bar' } }
 
       expect(Recipe.find(recipe.id).title).to eq('bar')
     end
+  end
+
+  def log_in_as_cook
+    cook = double('cook')
+    allow(controller).to receive(:authenticate_cook!).and_return(cook)
   end
 end

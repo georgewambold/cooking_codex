@@ -20,4 +20,4 @@
 
 *.swp
 
-/system/public/recipes/**
+/public/system/recipes/**
