@@ -65,4 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :test do
   gem "capybara-webkit"
   gem 'capybara'
+  gem 'rails-controller-testing'
 end

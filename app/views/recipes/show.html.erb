@@ -7,7 +7,9 @@
         <div class="by"><i class="fa fa-user" aria-hidden="true"></i> <%= @recipe.recipe_author %></div>
       </div>
       <div class="col-lg-8 text-center">
-        <img style="width:348px;height:348px;" src="<%= @recipe.primary_photo_url %>">
+        <% if @recipe.primary_photo_url.present? %>
+          <img style="width:348px;height:348px;" src="<%= @recipe.primary_photo_url %>">
+        <% end %>
         <div class="info">
           <div class="row">
             <div class="col-lg-4 col-sm-4">
@@ -34,13 +36,15 @@
           <div class="row">
             <div class="col-lg-6 col-sm-6">
               <h3>Ingredients</h3>
-              <ul class="ingredients">
-                <% @recipe.recipe_ingredients.each do |ingredient| %>
-                  <li>
-                    <%= "#{ingredient.amount} #{ingredient.name}" %>
-                  </li>
-                <% end%>
-              </ul>
+              <% if @recipe.recipe_ingredients.present? %>
+                <ul class="ingredients">
+                  <% @recipe.recipe_ingredients.each do |ingredient| %>
+                    <li>
+                      <%= "#{ingredient.amount} #{ingredient.name}" %>
+                    </li>
+                  <% end%>
+                </ul>
+              <% end %>
             </div>
             <div class="col-lg-6 col-sm-6">
               <h3>Directions</h3>

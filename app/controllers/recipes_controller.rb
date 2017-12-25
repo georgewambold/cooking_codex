@@ -26,9 +26,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = RecipeUpdater.new(recipe: Recipe.find(params[:id]), recipe_params: recipe_params).execute
 
-    if @recipe.update(recipe_params)
+    if @recipe.errors.empty?
       redirect_to @recipe
     else
       render :edit
@@ -36,7 +36,8 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    recipe = Recipe.find(params[:id])
+    @recipe = RecipeEditDecorator.decorate(recipe)
   end
 
   private

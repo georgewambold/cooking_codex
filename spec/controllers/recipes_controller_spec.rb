@@ -29,32 +29,56 @@ RSpec.describe RecipesController, type: :controller do
 
   describe '#create' do
     it "passes the recipe_params to Recipe" do
-      allow(Recipe).to receive(:create).and_call_original
-
       post :create, params: { recipe: { title: 'spagetti' } }
 
-      expect(Recipe).to have_received(:create)
-        .with(an_instance_of(ActionController::Parameters))
+      assert_redirected_to Recipe.last
     end
 
-    it 'redirects to the newly created recipe if there are no errors' do
-      post :create, params: { recipe: { title: 'spagetti' } }
-      recipe = Recipe.find_by(title: 'spagetti')
+    it 're-renders the recipes#new page if there are errors' do
+      post :create, params: { recipe: { summary: 'foo' } }
+      expect(response).to render_template(:new)
+    end
+  end
 
-      expect(:foo).to redirect_to(recipe)
+  describe '#show' do
+    it 'uses the recipe show decorator' do
+      recipe = Recipe.create(title: 'foo')
+      allow(RecipeShowDecorator).to receive(:decorate)
+
+      get :show, params: { id: recipe.id }
+
+      expect(RecipeShowDecorator).to have_received(:decorate)
+        .with(recipe)
+    end
+  end
+
+  describe '#edit' do
+    it 'uses the recipe edit decorator' do
+      recipe = Recipe.create(title: 'foo')
+      allow(RecipeEditDecorator).to receive(:decorate)
+
+      get :show, params: { id: recipe.id }
+
+      expect(RecipeEditDecorator).to have_received(:decorate)
+        .with(recipe)
+    end
+  end
+
+  describe '#update' do
+    it 'uses the recipe show decorator' do
+      recipe = Recipe.create(title: 'foo')
+
+      post :update, params: { id: recipe.id, recipe: { title: 'spoon' } }
+
+      expect(Recipe.find(recipe.id).title).to eq('spoon')
     end
 
-    it 'redirects to the newly created recipe if there are no errors' do
-      post :create, params: { recipe: { title: 'spagetti' } }
-      recipe = Recipe.find_by(title: 'spagetti')
+    it 'uses the recipe show decorator' do
+      recipe = Recipe.create(title: 'foo')
 
-      expect(:foo).to redirect_to(recipe)
-    end
+      post :update, params: { id: recipe.id, recipe: { title: 'bar' } }
 
-    xit 're-renders the recipes#new page if there are errors' do
-      post :create, params: { recipe: { title: nil } }
-
-      expect(:foo).to have_rendered(:new)
+      expect(Recipe.find(recipe.id).title).to eq('bar')
     end
   end
 end

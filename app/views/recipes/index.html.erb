@@ -9,9 +9,11 @@
         <% @recipes.each do |recipe| %>
           <div class="col-lg-4 col-sm-6">
             <div class="box grid recipes">
-              <div class="by"><i class="fa fa-user" aria-hidden="true"></i> <%= recipe.cook_name %></div>
+              <div class="by"><i class="fa fa-user"></i> <%= recipe.cook_name %></div>
               <a href=<%= recipe.show_path %>>
-                <img src=<%= recipe.primary_photo_url %>>
+                <% if recipe.primary_photo_url.present? %>
+                  <img src=<%= recipe.primary_photo_url %>>
+                <% end %>
               </a>
               <h2><a href= <%= recipe.show_path %> ><%= recipe.title %></a></h2>
               <p><%= recipe.summary %></p>

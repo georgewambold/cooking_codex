@@ -14,8 +14,11 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
 
-  accepts_nested_attributes_for :directions
-  accepts_nested_attributes_for :recipe_ingredients
+  accepts_nested_attributes_for :directions,
+    reject_if: lambda { |attributes| attributes['description'].blank? }
+
+  accepts_nested_attributes_for :recipe_ingredients,
+    reject_if: lambda { |attributes| attributes['amount'].blank? && attributes['ingredient_attributes']['name'].blank? }
 
   alias_method :category, :recipe_category
 
