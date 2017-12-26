@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = RecipeIndexDecorator.decorate_collection(Recipe.all)
+    @recipes = RecipeIndexDecorator.decorate_collection(Recipe.includes(:cook).all)
   end
 
   def update
