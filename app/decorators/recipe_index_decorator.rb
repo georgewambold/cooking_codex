@@ -4,7 +4,7 @@ class RecipeIndexDecorator < Draper::Decorator
 
   def cook_name
     if object.cook
-      object.cook.first_name.capitalize
+      object.cook.first_name&.capitalize
     end
   end
 

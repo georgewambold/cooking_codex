@@ -7,6 +7,6 @@ describe RecipeIndexDecorator do
 
     decorated_recipe = RecipeIndexDecorator.new(mock_recipe)
 
-    expect(decorated_recipe.cook_name).to eq('fred')
+    expect(decorated_recipe.cook_name).to eq('Fred')
   end
 end

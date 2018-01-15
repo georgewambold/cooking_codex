@@ -40,7 +40,7 @@
                 <ul class="ingredients">
                   <% @recipe.recipe_ingredients.each do |ingredient| %>
                     <li>
-                      <%= "#{ingredient.amount} #{ingredient.name}" %>
+                      <%= "#{ingredient.name}, #{ingredient.amount}" %>
                     </li>
                   <% end%>
                 </ul>

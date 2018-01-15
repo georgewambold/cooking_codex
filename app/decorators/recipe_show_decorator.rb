@@ -7,7 +7,7 @@ class RecipeShowDecorator < Draper::Decorator
 
   def recipe_author
     if object.cook
-      object.cook.first_name.capitalize
+      object.cook.first_name&.capitalize
     end
   end
 

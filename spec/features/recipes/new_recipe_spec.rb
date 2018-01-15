@@ -14,7 +14,7 @@ feature 'creating a new recipe' do
   scenario 'navigating to the new recipe page without logging in' do
     visit('/recipes/new')
 
-    expect(page).to have_content('Log In')
+    expect(page).to have_content('Log in')
   end
 
 
